@@ -1,5 +1,7 @@
 name: Android CI
 
+# Otestovat, jak se bude chovat spousteni buildu pro cisty PUSH a pro PULL_REQUEST vytvoreny na GitHub
+
 on:
   push:
     branches:
