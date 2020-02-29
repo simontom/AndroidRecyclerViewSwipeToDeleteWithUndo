@@ -28,7 +28,8 @@ jobs:
       - name: Rename release APK
         run: |
           echo "$NEW_APK_NAME"
-          echo "$env.NEW_APK_NAME"
+          echo "`env.NEW_APK_NAME`"
+          echo "${env.NEW_APK_NAME}"
           echo "${{env.NEW_APK_NAME}}"
           mv "./app/build/outputs/apk/release/app-release-unsigned.apk" "./${{env.NEW_APK_NAME}}.apk"
           ls -al
