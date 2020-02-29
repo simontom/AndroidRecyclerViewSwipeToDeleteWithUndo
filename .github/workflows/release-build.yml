@@ -24,13 +24,11 @@ jobs:
         shell: bash
         run: |
           set -x
-          NEW_APK_NAME="release-$(date +'%Y-%m-%d')"
-          echo $NEW_APK_NAME
-          echo "::set-env name=NEW_APK_NAME::$NEW_APK_NAME"
+          ::set-output name=NEW_APK_NAME::"release-$(date +'%Y-%m-%d')"
           mv "./app/build/outputs/apk/release/app-release-unsigned.apk" "./$NEW_APK_NAME.apk"
           ls -al
       
-      - name: Upload release APK
+      - name: Persist release APK
         uses: actions/upload-artifact@v1
         with:
           name: $NEW_APK_NAME
