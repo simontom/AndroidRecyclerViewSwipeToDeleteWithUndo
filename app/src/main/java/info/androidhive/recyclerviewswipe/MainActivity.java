@@ -31,6 +31,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity implements RecyclerItemTouchHelper.RecyclerItemTouchHelperListener {
 
     private static final String TAG = MainActivity.class.getSimpleName();
+    
     private RecyclerView recyclerView;
     private List<Item> cartList;
     private CartListAdapter mAdapter;
