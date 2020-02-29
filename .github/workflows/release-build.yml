@@ -1,6 +1,6 @@
 name: Android CI
 env:
-  NEW_APK_NAME: $(`date +'%Y-%m-%d'`)
+  NEW_APK_NAME: "`date +'%Y-%m-%d'`"
 
 on:
   push:
