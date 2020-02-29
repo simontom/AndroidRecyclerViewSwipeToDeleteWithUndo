@@ -21,6 +21,7 @@ jobs:
         run: bash ./gradlew assembleRelease --stacktrace
       
       - name: Rename release APK
+        shell: bash
         run: |
           set -x
           NEW_APK_NAME="release-$(date +'%Y-%m-%d')"
