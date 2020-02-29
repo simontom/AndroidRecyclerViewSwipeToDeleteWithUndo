@@ -24,7 +24,7 @@ jobs:
         shell: bash
         run: |
           set -x
-          ::set-output name=NEW_APK_NAME::"release-$(date +'%Y-%m-%d')"
+          echo "::set-output name=NEW_APK_NAME::`date +'%Y-%m-%d'`"
           mv "./app/build/outputs/apk/release/app-release-unsigned.apk" "./$NEW_APK_NAME.apk"
           ls -al
       
