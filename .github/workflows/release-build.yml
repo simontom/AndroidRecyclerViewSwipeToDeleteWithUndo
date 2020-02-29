@@ -30,8 +30,10 @@ jobs:
       
       - name: Rename release APK
         run: |
-          mv "./app/build/outputs/apk/release/app-release-unsigned.apk" "./$NEW_APK_NAME.apk"
+          mv "./app/build/outputs/apk/release/app-release-unsigned.apk" "./${{ env.NEW_APK_NAME }}.apk"
           ls -al
+      
+      
       
       - name: Persist release APK
         uses: actions/upload-artifact@v1
