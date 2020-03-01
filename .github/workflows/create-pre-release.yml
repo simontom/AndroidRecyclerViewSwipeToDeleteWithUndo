@@ -22,4 +22,4 @@ jobs:
           tag: pre-release
           allowUpdates: true
           prerelease: true
-          artifact: "./release.txt"
+          artifact: "./release2.txt"
