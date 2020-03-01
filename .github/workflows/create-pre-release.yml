@@ -21,7 +21,9 @@ jobs:
       
       - name: Rename release APK
         run: |
+          ls -al
           mv "./_delete-me_.txt" "./${{ env.NEW_APK_NAME }}.txt"
+          ls -al
       
       - name: Create pre-release from latest repo state
         uses: ncipollo/release-action@v1
