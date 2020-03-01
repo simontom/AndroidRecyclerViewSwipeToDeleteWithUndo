@@ -1,0 +1,33 @@
+name: Android CI
+
+on:
+ push:
+   branches:
+     - 'master'
+
+jobs:
+  release:
+    name: Create pre-release
+    runs-on: ubuntu-latest
+    if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
+
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Create release name
+        run: |
+          export APK_NAME="release"
+          echo "::set-env name=NEW_APK_NAME::$APK_NAME"
+      
+      - name: Rename release APK
+        run: |
+          mv "./_delete-me_.txt" "./${{ env.NEW_APK_NAME }}.txt"
+      
+      - name: Create pre-release from latest repo state
+        uses: ncipollo/release-action@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          name: pre-release
+          allowUpdates: true
+          prerelease: true
+          artifacts: "./${{ env.NEW_APK_NAME }}.txt"
