@@ -32,9 +32,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           # Find out this value by opening https://api.github.com/repos/<owner>/<repo>/releases in your browser and copy the full "upload_url" value including the {?name,label} part:  
-          upload_url: https://uploads.github.com/repos/simontom/AndroidRecyclerViewSwipeToDeleteWithUndo/releases/24110446/assets{?name,label}
+          upload_url: https://uploads.github.com/repos/simontom/AndroidRecyclerViewSwipeToDeleteWithUndo/releases/24110703/assets{?name,label}
           # Same as above (id can just be taken out the upload_url, it's used to find old releases)
-          release_id: 24110446
+          release_id: 24110703
           # Path to archive to upload
           asset_path: "./${{ env.NEW_APK_NAME }}.txt"
           # Name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
