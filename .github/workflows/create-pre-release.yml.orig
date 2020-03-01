@@ -33,5 +33,9 @@ jobs:
           tag: pre-release
           allowUpdates: true
           prerelease: true
+<<<<<<< HEAD
           draft: true
+          artifact: "./release2.txt"
+=======
           artifact: "./${{ env.NEW_APK_NAME }}.txt"
+>>>>>>> parent of 8e672c5... xxx
