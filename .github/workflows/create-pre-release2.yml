@@ -7,7 +7,6 @@ on:
 
 jobs:
   release:
-    name: Create pre-release
     runs-on: ubuntu-latest
     if: "!contains(github.event.head_commit.message, '[ci skip]') && !contains(github.event.head_commit.message, '[skip ci]')"
 
@@ -25,13 +24,21 @@ jobs:
           mv "./_delete-me_.txt" "./${{ env.NEW_APK_NAME }}.txt"
           ls -al
       
-      - name: Create pre-release from latest repo state
-        uses: ncipollo/release-action@v1
+      - name: Deploy apk from latest repo 
+        uses: WebFreak001/deploy-nightly@latest
+        env:
+          # Automatically provided by github actions (not for longer Actions, valid only for an hour)
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          name: pre-release
-          tag: pre-release
-          allowUpdates: true
-          prerelease: true
-          draft: true
-          artifact: "./${{ env.NEW_APK_NAME }}.txt"
+          # Find out this value by opening https://api.github.com/repos/<owner>/<repo>/releases in your browser and copy the full "upload_url" value including the {?name,label} part:  
+          upload_url: https://uploads.github.com/repos/simontom/AndroidRecyclerViewSwipeToDeleteWithUndo/releases/24110446/assets{?name,label}
+          # Same as above (id can just be taken out the upload_url, it's used to find old releases)
+          release_id: 24110446
+          # Path to archive to upload
+          asset_path: "./${{ env.NEW_APK_NAME }}.txt"
+          # Name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
+          asset_name: "${{ env.NEW_APK_NAME }}-$$.txt"
+          # Required by GitHub API
+          asset_content_type: raw
+          # Optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
+          max_releases: 2
