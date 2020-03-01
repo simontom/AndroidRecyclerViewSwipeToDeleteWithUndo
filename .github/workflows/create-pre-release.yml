@@ -22,4 +22,5 @@ jobs:
           tag: pre-release
           allowUpdates: true
           prerelease: true
+          draft: true
           artifact: "./release2.txt"
