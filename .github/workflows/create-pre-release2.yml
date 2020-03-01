@@ -43,4 +43,4 @@ jobs:
           # Required by GitHub API
           asset_content_type: raw
           # Optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
-          max_releases: 4
+          max_releases: 2
