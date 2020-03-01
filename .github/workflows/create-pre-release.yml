@@ -14,17 +14,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Create release name
-        run: |
-          export APK_NAME="release"
-          echo "::set-env name=NEW_APK_NAME::$APK_NAME"
-      
-      - name: Rename release APK
-        run: |
-          ls -al
-          mv "./_delete-me_.txt" "./${{ env.NEW_APK_NAME }}.txt"
-          ls -al
-      
       - name: Create pre-release from latest repo state
         uses: ncipollo/release-action@v1
         with:
@@ -33,4 +22,4 @@ jobs:
           tag: pre-release
           allowUpdates: true
           prerelease: true
-          artifact: "./${{ env.NEW_APK_NAME }}.txt"
+          artifact: "./release.txt"
