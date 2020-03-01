@@ -43,7 +43,7 @@ jobs:
       - name: Purge old artifacts
         uses: glassechidna/artifact-cleaner@master
 #         with:
-#           minimumAge: 604800 # all artifacts at least "7 * one day" old
+#           minimumAge: 604800 # all artifacts at least "7 * one_day" old
       
       - name: Persist release APK
         uses: actions/upload-artifact@v1
