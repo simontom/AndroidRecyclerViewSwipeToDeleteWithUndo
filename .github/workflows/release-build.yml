@@ -39,7 +39,7 @@ jobs:
         run: |
           mv "./app/build/outputs/apk/release/app-release-unsigned.apk" "./${{ env.NEW_APK_NAME }}.apk"
       
-      - name: Cleanup old artifacts
+      - name: Purge old artifacts
         uses: glassechidna/artifact-cleaner@master
 #         with:
 #           minimumAge: 604800 # all artifacts at least "7 * one day" old
