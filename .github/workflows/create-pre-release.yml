@@ -28,6 +28,7 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           name: pre-release
+          tag: pre-release
           allowUpdates: true
           prerelease: true
           artifact: "./${{ env.NEW_APK_NAME }}.txt"
