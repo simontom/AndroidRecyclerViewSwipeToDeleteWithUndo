@@ -26,7 +26,8 @@ jobs:
           ls -al
       
       - name: Deploy apk from latest repo 
-        uses: WebFreak001/deploy-nightly@master
+#         uses: WebFreak001/deploy-nightly@master
+        uses: simontom/deploy-nightly@master
         env:
           # Automatically provided by github actions (not for longer Actions, valid only for an hour)
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
