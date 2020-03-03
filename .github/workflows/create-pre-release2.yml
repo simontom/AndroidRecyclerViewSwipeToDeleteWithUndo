@@ -16,7 +16,7 @@ jobs:
       
       - name: Create release name
         run: |
-          export APK_NAME_PRERFIX=""release_"
+          export APK_NAME_PRERFIX="release_"
           echo "::set-env name=NEW_APK_NAME_PRERFIX::$APK_NAME_PRERFIX"
           
           export APK_NAME_EXT="apk"
