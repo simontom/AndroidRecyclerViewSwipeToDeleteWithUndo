@@ -43,9 +43,9 @@ jobs:
           # Same as above (id can just be taken out the upload_url, it's used to find old releases)
           release_id: 24111081
           # Path to archive to upload
-          asset_path: "./${{ env.NEW_APK_NAME }}.txt"
+          asset_path: "./${{ env.NEW_APK_NAME }}"
           # Name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
-          asset_name: "${{ env.NEW_APK_NAME }}.txt"
+          asset_name: "${{ env.NEW_APK_NAME }}"
 #           asset_name: "${{ env.NEW_APK_NAME }}-$$.txt"
           assets_names_regex: "${{ env.NEW_APK_NAME_PRERFIX }}.+\\.${{ env.NEW_APK_NAME_EXT }}"
           # Required by GitHub API
