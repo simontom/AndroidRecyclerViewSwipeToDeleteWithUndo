@@ -47,7 +47,7 @@ jobs:
           # Name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
           asset_name: "${{ env.NEW_APK_NAME }}"
 #           asset_name: "${{ env.NEW_APK_NAME }}-$$.txt"
-          assets_names_regex: "${{ env.NEW_APK_NAME_PRERFIX }}.+\\.${{ env.NEW_APK_NAME_EXT }}"
+          assets_names_regex: "${{ env.NEW_APK_NAME_PRERFIX }}.+\\.${{ env.NEW_APK_NAME_EXT }}|txt"
           # Required by GitHub API
           asset_content_type: raw
           # Optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
