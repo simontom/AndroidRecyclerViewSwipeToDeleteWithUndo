@@ -16,13 +16,19 @@ jobs:
       
       - name: Create release name
         run: |
-          export APK_NAME=""release_$(date +'%F_%T')"_${GITHUB_SHA::8}"
+          export APK_NAME_PRERFIX=""release_"
+          echo "::set-env name=NEW_APK_NAME_PRERFIX::$APK_NAME_PRERFIX"
+          
+          export APK_NAME_EXT="apk"
+          echo "::set-env name=NEW_APK_NAME_EXT::$APK_NAME_EXT"
+          
+          export APK_NAME="$APK_NAME_PRERFIX$(date +'%F_%T')_${GITHUB_SHA::8}.$APK_NAME_EXT"
           echo "::set-env name=NEW_APK_NAME::$APK_NAME"
       
       - name: Rename release APK
         run: |
           ls -al
-          mv "./_delete-me_.txt" "./${{ env.NEW_APK_NAME }}.txt"
+          mv "./_delete-me_.txt" "./${{ env.NEW_APK_NAME }}"
           ls -al
       
       - name: Deploy apk from latest repo 
@@ -41,6 +47,7 @@ jobs:
           # Name to upload the release as, use $$ to insert date (YYYYMMDD) and 6 letter commit hash
           asset_name: "${{ env.NEW_APK_NAME }}.txt"
 #           asset_name: "${{ env.NEW_APK_NAME }}-$$.txt"
+          assets_names_regex: "${{ env.NEW_APK_NAME_PRERFIX }}.+\\.${{ env.NEW_APK_NAME_EXT }}"
           # Required by GitHub API
           asset_content_type: raw
           # Optional, if there are more releases than this matching the asset_name, the oldest ones are going to be deleted
